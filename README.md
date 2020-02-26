@@ -24,6 +24,8 @@ _This activity is more about the discussion in how to best organize data endpoin
 
 There is a `clients.js` file inside of the data folder.
 
+with q? --> able to query!!!!
+
 Create RESTful endpoint (only one) that expects a search query and responds with the requested data, and/or the appropirate HTTP code.
 
 ---
