@@ -144,6 +144,7 @@ codeblock {
 
 .submit-button {
   background: #951f04;
+  outline: none;
   border: none;
   color: white;
   cursor: pointer;

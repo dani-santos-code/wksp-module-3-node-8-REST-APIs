@@ -2,9 +2,34 @@ const boxesWrapper = document.getElementById("boxes-wrapper");
 const modalDiv = document.getElementById("modal");
 const randomId = Math.round(Math.random() * (130 - 120) + 120).toString();
 
-const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
-'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-'t', 'u', 'v', 'w', 'x', 'y', 'z'];
+const alphabet = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z"
+];
 
 const arrValues = new Array();
 const word = [];
@@ -34,6 +59,7 @@ const handleSubmit = async () => {
     }
   }
   checkWin(letterCount);
+  document.getElementById("form").reset();
 };
 
 const checkWin = letterCount => {
@@ -41,7 +67,7 @@ const checkWin = letterCount => {
   console.log(arrValues);
   const isAllTrue = currentValue => currentValue === true;
   if (arrValues.length === letterCount && !arrValues.includes(undefined)) {
-    // console.log("HERE. START CHECKING");
+    console.log("HERE. START CHECKING");
     isWinner = arrValues.every(isAllTrue);
   }
   if (isWinner) {
