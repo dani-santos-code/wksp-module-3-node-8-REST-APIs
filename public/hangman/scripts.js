@@ -4,6 +4,8 @@ const boxesWrapper = document.getElementById("boxes-wrapper");
 
 const randomId = Math.round(Math.random() * (130 - 120) + 120).toString();
 
+const arrValues = new Array();
+
 const generateDivs = async randomId => {
   const response = await fetch(`/hangman/${randomId}`);
   const { letterCount } = await response.json();
@@ -20,6 +22,11 @@ const handleSubmit = async () => {
   event.preventDefault();
   const letter = document.getElementById("letter").value;
   const response = await fetch(`/hangman/guess/${randomId}/${letter}`);
-  const resParsed = await response.json();
-  console.log(resParsed);
+  const { trueIndexes, letterCount } = await response.json();
+  if (trueIndexes.length !== 0) {
+    for (let i of trueIndexes) {
+      arrValues[i] = true;
+    }
+  }
+  console.log(arrValues);
 };

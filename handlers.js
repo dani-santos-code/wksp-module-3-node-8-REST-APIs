@@ -18,11 +18,6 @@ const handleWords = (req, res) => {
   res.json(words);
 };
 
-// const handleRandomWordId = (req, res) => {
-//   const randomId = Math.round(Math.random() * (130 - 120) + 120).toString();
-//   res.status(200).json({ randomId });
-// };
-
 const handleCountById = (req, res) => {
   const { wordId } = req.params;
   const [{ letterCount }] = words.filter(word => {
@@ -38,6 +33,7 @@ const handleGuess = (req, res) => {
   // query DB by wordId
   const { word } = words.find(word => word.id === wordId);
   let guesses = [];
+  console.log(word);
   const wordToArray = word.split("");
   const letterCount = word.length;
   wordToArray.forEach(char => {
@@ -47,14 +43,20 @@ const handleGuess = (req, res) => {
       guesses.push(false);
     }
   });
-  res.status(200).json({ guesses, letterCount });
+  const trueIndexes = guesses
+    .map((guess, index) => {
+      if (guess) {
+        return index;
+      }
+    })
+    .filter(val => val !== undefined);
+  res.status(200).json({ guesses, letterCount, trueIndexes });
 };
 
 module.exports = {
   handleClient,
   handleWords,
   handleGuess,
-  //   handleRandomWordId,
   handleCountById
 };
 
