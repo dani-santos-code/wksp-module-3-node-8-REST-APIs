@@ -91,7 +91,12 @@ codeblock {
 
 .message {
   display: block;
-  height: 25px; }
+  height: 25px;
+  font-family: "Lacquer"; }
+
+.counter {
+  height: 25px;
+  font-size: 20px; }
 
 .boxes-wrapper {
   display: flex;

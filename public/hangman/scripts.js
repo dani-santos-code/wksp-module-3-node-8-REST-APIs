@@ -1,35 +1,9 @@
 const boxesWrapper = document.getElementById("boxes-wrapper");
 const modalDiv = document.getElementById("modal");
 const randomId = Math.round(Math.random() * (130 - 120) + 120).toString();
+let LIVES = 10;
 
-const alphabet = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z"
-];
+document.getElementById("counter").innerText += `Total Tries: ${LIVES}`;
 
 const arrValues = new Array();
 const word = [];
@@ -56,25 +30,34 @@ const handleSubmit = async () => {
   if (trueIndexes.length !== 0) {
     for (let i of trueIndexes) {
       arrValues[i] = true;
-      word[i] = letter;
+      if (!word.includes(letter)) {
+        word[i] = letter;
+      }
       document.getElementById(i).innerText = letter;
     }
   } else {
+    LIVES -= 1;
+    console.log(LIVES);
+    document.getElementById("counter").innerText = `Total Tries: ${LIVES}`;
     document.getElementById("message").innerText = "Not really! Try again!";
   }
-  checkWin(letterCount);
+  checkEnd(letterCount);
   document.getElementById("form").reset();
 };
 
-const checkWin = letterCount => {
-  let isWinner = false;
+const checkEnd = letterCount => {
+  let isEnd = false;
   // console.log(arrValues);
   const isAllTrue = currentValue => currentValue === true;
   if (arrValues.length === letterCount && !arrValues.includes(undefined)) {
     console.log("HERE. START CHECKING");
-    isWinner = arrValues.every(isAllTrue);
+    isEnd = arrValues.every(isAllTrue);
   }
-  if (isWinner) {
+  if (LIVES < 1) {
+    modalDiv.style.display = "flex";
+    modalDiv.innerText = `Holy cow!🐄You Lost All Your Lives!☠️ Better luck, next time!`;
+  }
+  if (isEnd) {
     // console.log("YAY!!! YOU GOT IT!!!!!!!!");
     const capitalizeFirst = word[0].toUpperCase();
     const lowerCase = word.slice(1).join("");
