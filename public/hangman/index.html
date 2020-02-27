@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <link rel="stylesheet" href="../css/styles.css" />
-    <style>
-    </style>
-</head>
-<body>
+    <style></style>
+  </head>
+  <body>
     <div class="content">
-        time to get to hanging.... I mean guessing...
+      <form onsubmit="handleSubmit(event)">
+        <label for="letter">Letter</label>
+        <input
+          id="letter"
+          type="text"
+          name="letter"
+          placeholder="Enter a letter"
+          required
+        />
+        <button type="submit">NOW!!</button>
+      </form>
+      <div id="boxes-wrapper"></div>
     </div>
     <script src="scripts.js"></script>
-</body>
-
+  </body>
 </html>
