@@ -28,5 +28,21 @@ const handleSubmit = async () => {
       arrValues[i] = true;
     }
   }
-  console.log(arrValues);
+  // console.log(arrValues);
+  checkWin(letterCount);
+  // if (checkWin()) {
+  //   console.log("YAY!!! YOU MADE IT!!");
+  // }
+};
+
+const checkWin = letterCount => {
+  let isWinner = false;
+  const isAllTrue = currentValue => currentValue === true;
+  if (arrValues.length === letterCount) {
+    console.log("HERE. START CHECKING");
+    isWinner = arrValues.every(isAllTrue);
+  }
+  if (isWinner) {
+    console.log("YAY!!! YOU GOT IT!!!!!!!!");
+  }
 };
