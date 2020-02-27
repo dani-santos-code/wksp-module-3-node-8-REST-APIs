@@ -18,10 +18,10 @@ const handleWords = (req, res) => {
   res.json(words);
 };
 
-const handleRandomWordId = (req, res) => {
-  const randomId = Math.round(Math.random() * (130 - 120) + 120).toString();
-  res.status(200).json({ randomId });
-};
+// const handleRandomWordId = (req, res) => {
+//   const randomId = Math.round(Math.random() * (130 - 120) + 120).toString();
+//   res.status(200).json({ randomId });
+// };
 
 const handleCountById = (req, res) => {
   const { wordId } = req.params;
@@ -30,7 +30,6 @@ const handleCountById = (req, res) => {
       return word.letterCount;
     }
   });
-  console.log(letterCount);
   res.status(200).json({ letterCount });
 };
 
@@ -55,7 +54,7 @@ module.exports = {
   handleClient,
   handleWords,
   handleGuess,
-  handleRandomWordId,
+  //   handleRandomWordId,
   handleCountById
 };
 
