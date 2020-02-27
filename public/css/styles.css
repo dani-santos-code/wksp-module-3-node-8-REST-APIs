@@ -89,6 +89,10 @@ codeblock {
   text-shadow: 2px 2px #6a2f2f7d;
   font-size: 50px; }
 
+.message {
+  display: block;
+  height: 25px; }
+
 .boxes-wrapper {
   display: flex;
   justify-content: center; }
@@ -122,8 +126,9 @@ codeblock {
   /* Enable scroll if needed */
   background-color: black;
   /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.61);
   /* Black w/ opacity */
+  text-shadow: 2px 2px #c4070796;
   justify-content: center;
   color: white;
   font-size: 30px;

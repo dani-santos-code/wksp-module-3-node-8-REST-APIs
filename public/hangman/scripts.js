@@ -48,6 +48,8 @@ generateDivs(randomId);
 
 const handleSubmit = async () => {
   event.preventDefault();
+  document.getElementById("message").innerText = "";
+
   const letter = document.getElementById("letter").value;
   const response = await fetch(`/hangman/guess/${randomId}/${letter}`);
   const { trueIndexes, letterCount } = await response.json();
@@ -57,6 +59,8 @@ const handleSubmit = async () => {
       word[i] = letter;
       document.getElementById(i).innerText = letter;
     }
+  } else {
+    document.getElementById("message").innerText = "Not really! Try again!";
   }
   checkWin(letterCount);
   document.getElementById("form").reset();
@@ -64,7 +68,7 @@ const handleSubmit = async () => {
 
 const checkWin = letterCount => {
   let isWinner = false;
-  console.log(arrValues);
+  // console.log(arrValues);
   const isAllTrue = currentValue => currentValue === true;
   if (arrValues.length === letterCount && !arrValues.includes(undefined)) {
     console.log("HERE. START CHECKING");
