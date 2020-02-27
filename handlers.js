@@ -30,7 +30,6 @@ const handleCountById = (req, res) => {
 
 const handleGuess = (req, res) => {
   const { wordId, letter } = req.params;
-  // query DB by wordId
   const { word } = words.find(word => word.id === wordId);
   let guesses = [];
   console.log(word);
@@ -59,8 +58,3 @@ module.exports = {
   handleGuess,
   handleCountById
 };
-
-// http://localhost:8080/clients?name=daniele
-
-// .get("hello/:name")
-// hello/bob?message=bacon

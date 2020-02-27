@@ -2,22 +2,30 @@
 <html>
   <head>
     <link rel="stylesheet" href="../css/styles.css" />
-    <style></style>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lacquer&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="content">
-      <form onsubmit="handleSubmit(event)">
-        <label for="letter">Letter</label>
-        <input
-          id="letter"
-          type="text"
-          name="letter"
-          placeholder="Enter a letter"
-          required
-        />
-        <button type="submit">NOW!!</button>
-      </form>
-      <div class="boxes-wrapper" id="boxes-wrapper"></div>
+      <h1 class="main-title">HangMan</h1>
+      <div class="game-main">
+        <form onsubmit="handleSubmit(event)">
+          <label for="letter" class="input-label"
+            >Enter a Letter or....DIE!!!</label
+          >
+          <input
+            class="letter-input"
+            id="letter"
+            type="text"
+            name="letter"
+            required
+          />
+          <button class="submit-button" type="submit">GUESS</button>
+        </form>
+        <div class="boxes-wrapper" id="boxes-wrapper"></div>
+      </div>
       <div class="modal" id="modal"></div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

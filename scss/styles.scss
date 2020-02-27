@@ -8,6 +8,9 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: "Lacquer";
+  background-image: url("/images/rope.svg");
+  background-color: #6f6c6c;
 }
 
 .main {
@@ -31,6 +34,8 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 24px;
+  justify-content: center;
+  align-items: center;
 }
 
 .box {
@@ -49,10 +54,10 @@ body {
   }
 }
 
-@media screen and (min-width: 900px) {
-  .content {
-    flex-direction: row;
-    justify-content: space-between;
-    min-height: 500px;
-  }
-}
+// @media screen and (min-width: 900px) {
+//   .content {
+//     flex-direction: row;
+//     justify-content: space-between;
+//     min-height: 500px;
+//   }
+// }

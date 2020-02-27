@@ -83,12 +83,18 @@ codeblock {
   margin: 12px 32px 6px 0;
   padding: 12px 14px; }
 
+.main-title {
+  color: white;
+  font-family: "Lacquer";
+  text-shadow: 2px 2px #6a2f2f7d;
+  font-size: 50px; }
+
 .boxes-wrapper {
   display: flex;
-  margin: 0 auto; }
+  justify-content: center; }
 
 .letter-box {
-  border: 2px solid lightblue;
+  border: 2px solid #430a0a;
   margin: 20px;
   width: 50px;
   height: 50px;
@@ -123,11 +129,58 @@ codeblock {
   font-size: 30px;
   align-items: center; }
 
+.letter-input {
+  height: 40px;
+  width: 50px;
+  border: 2px solid #00000059;
+  border-radius: 4px;
+  outline: none;
+  font-size: 20px;
+  font-family: "Lacquer";
+  text-align: center; }
+
+.letter-input:focus {
+  border-color: cornflowerblue; }
+
+.submit-button {
+  background: #951f04;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 8px;
+  width: 73px;
+  text-align: center;
+  height: 50px;
+  transition: 0.2s ease all;
+  font-family: "Lacquer";
+  font-size: 20px; }
+
+.submit-button:hover {
+  opacity: 0.8; }
+
+.game-main {
+  background-color: #f8f8f8;
+  border-radius: 2px;
+  width: auto;
+  height: auto;
+  margin: 30px;
+  padding: 50px;
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12); }
+
+.input-label {
+  font-size: 20px;
+  color: #0f0b0b;
+  text-shadow: 2px 2px #ef00007d; }
+
 body {
   background: #fafafa;
   display: flex;
   flex-direction: column;
-  min-height: 100vh; }
+  min-height: 100vh;
+  font-family: "Lacquer";
+  background-image: url("/images/rope.svg");
+  background-color: #6f6c6c; }
 
 .main {
   flex: 1 0 auto; }
@@ -144,7 +197,9 @@ body {
 .content {
   display: flex;
   flex-direction: column;
-  margin-top: 24px; }
+  margin-top: 24px;
+  justify-content: center;
+  align-items: center; }
 
 .box {
   border: 1px solid #707070;
@@ -157,9 +212,3 @@ body {
   border: 1px solid #cacaca;
   margin: 12px 32px 6px 0;
   padding: 12px 14px; }
-
-@media screen and (min-width: 900px) {
-  .content {
-    flex-direction: row;
-    justify-content: space-between;
-    min-height: 500px; } }
