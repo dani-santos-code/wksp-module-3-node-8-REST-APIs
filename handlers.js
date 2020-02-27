@@ -23,6 +23,17 @@ const handleRandomWordId = (req, res) => {
   res.status(200).json({ randomId });
 };
 
+const handleCountById = (req, res) => {
+  const { wordId } = req.params;
+  const [{ letterCount }] = words.filter(word => {
+    if (word.id === wordId) {
+      return word.letterCount;
+    }
+  });
+  console.log(letterCount);
+  res.status(200).json({ letterCount });
+};
+
 const handleGuess = (req, res) => {
   const { wordId, letter } = req.params;
   // query DB by wordId
@@ -40,7 +51,13 @@ const handleGuess = (req, res) => {
   res.status(200).json({ guesses, letterCount });
 };
 
-module.exports = { handleClient, handleWords, handleGuess, handleRandomWordId };
+module.exports = {
+  handleClient,
+  handleWords,
+  handleGuess,
+  handleRandomWordId,
+  handleCountById
+};
 
 // http://localhost:8080/clients?name=daniele
 

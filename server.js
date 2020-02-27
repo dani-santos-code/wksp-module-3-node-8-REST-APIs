@@ -8,7 +8,8 @@ const {
   handleClient,
   handleWords,
   handleGuess,
-  handleRandomWordId
+  handleRandomWordId,
+  handleCountById
 } = require("./handlers");
 const PORT = process.env.PORT || 8000;
 
@@ -30,5 +31,6 @@ express()
   // endpoints
   .get("/hangman/words", handleWords)
   .get("/hangman/randomWordId", handleRandomWordId)
+  .get("/hangman/:wordId", handleCountById)
   .get("/hangman/guess/:wordId/:letter", handleGuess)
   .listen(PORT, () => console.log(`Listening on port ${PORT}`));
