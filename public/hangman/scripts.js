@@ -1,6 +1,6 @@
 const boxesWrapper = document.getElementById("boxes-wrapper");
 const modalDiv = document.getElementById("modal");
-const randomId = Math.round(Math.random() * (130 - 120) + 120).toString();
+const randomId = Math.round(Math.random() * (140 - 120) + 120).toString();
 const missesDiv = document.getElementById("misses");
 const hintButton = document.getElementById("hint-button");
 let LIVES = 10;
