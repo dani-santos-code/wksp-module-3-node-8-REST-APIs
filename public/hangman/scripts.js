@@ -51,16 +51,19 @@ const handleSubmit = async () => {
     document.getElementById("message").innerText = "Not really! Try again!";
   }
   checkEnd(letterCount);
-  document.getElementById("form").reset();
+  const form = document.getElementById("form");
+  form.reset();
+  letter.focus();
 };
 
 const checkEnd = letterCount => {
   let isEnd = false;
   // console.log(arrValues);
-  const isAllTrue = currentValue => currentValue === true;
+  // const isAllTrue = currentValue => currentValue === true;
   if (arrValues.length === letterCount && !arrValues.includes(undefined)) {
     // console.log("HERE. START CHECKING");
-    isEnd = arrValues.every(isAllTrue);
+    // isEnd = arrValues.every(isAllTrue);
+    isEnd = true;
   }
   if (LIVES < 1) {
     modalDiv.style.display = "flex";
