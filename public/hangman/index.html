@@ -18,7 +18,15 @@
     <div class="content">
       <h1 class="main-title">HangMan</h1>
       <div class="game-main">
-        <div class="counter" id="counter"></div>
+        <div class="counter-hint-wrapper">
+          <div class="counter" id="counter"></div>
+          <div class="hint-wrapper">
+            <p class="hint" id="hint"></p>
+            <button class="submit-button " id="hint-button" type="submit">
+              HINT
+            </button>
+          </div>
+        </div>
         <form id="form" onsubmit="handleSubmit(event)">
           <label for="letter" class="input-label"
             >Enter a Letter or....DIE!!!</label

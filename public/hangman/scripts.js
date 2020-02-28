@@ -2,6 +2,7 @@ const boxesWrapper = document.getElementById("boxes-wrapper");
 const modalDiv = document.getElementById("modal");
 const randomId = Math.round(Math.random() * (130 - 120) + 120).toString();
 const missesDiv = document.getElementById("misses");
+const hintButton = document.getElementById("hint-button");
 let LIVES = 10;
 let misses = [];
 
@@ -25,10 +26,13 @@ generateDivs(randomId);
 
 const handleSubmit = async () => {
   event.preventDefault();
+
   document.getElementById("message").innerText = "";
+
   const letter = document.getElementById("letter").value.toLowerCase();
   const response = await fetch(`/hangman/guess/${randomId}/${letter}`);
   const { trueIndexes, letterCount } = await response.json();
+
   if (trueIndexes.length !== 0) {
     for (let i of trueIndexes) {
       arrValues[i] = true;
@@ -77,3 +81,20 @@ const checkEnd = letterCount => {
     modalDiv.innerText = `${capitalizeFirst + lowerCase} it is! Woohooo!!!!!🌈`;
   }
 };
+
+const getHints = async randomId => {
+  const response = await fetch(`/hangman/${randomId}`);
+  const { hint } = await response.json();
+  return hint;
+};
+
+const handleClick = async () => {
+  LIVES -= 1;
+  document.getElementById("counter").innerText = `Total Tries: ${LIVES}`;
+  const hint = await getHints(randomId);
+  const hintP = document.getElementById("hint");
+  hintP.innerText = `${hint}`;
+  hintP.style.display = "block";
+};
+
+hintButton.addEventListener("click", handleClick);

@@ -22,8 +22,8 @@ const handleCountById = (req, res, next) => {
   const { wordId } = req.params;
   const isValidId = words.filter(word => word.id === wordId);
   if (isValidId.length > 0) {
-    const [{ letterCount }] = isValidId;
-    res.status(200).json({ letterCount });
+    const [{ letterCount, hint }] = isValidId;
+    res.status(200).json({ letterCount, hint });
   } else {
     res.status(404).json({ error: "Please, enter a valid ID" });
   }
