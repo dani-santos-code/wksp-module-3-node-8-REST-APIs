@@ -39,14 +39,14 @@ const handleSubmit = async () => {
     if (!misses.includes(letter)) {
       LIVES -= 1;
       misses.push(letter);
-    }
-    misses.forEach((miss, i) => {
       const div = document.createElement("div");
-      div.setAttribute("id", `miss${i}`);
+      div.setAttribute("id", `miss${misses.length - 1}`);
       div.classList.add("missed-letter");
       missesDiv.appendChild(div);
-      document.getElementById(`miss${i}`).innerText = miss;
-    });
+      document.getElementById(`miss${misses.length - 1}`).innerText =
+        misses[misses.length - 1];
+    }
+    // console.log(misses);
     document.getElementById("counter").innerText = `Total Tries: ${LIVES}`;
     document.getElementById("message").innerText = "Not really! Try again!";
   }
