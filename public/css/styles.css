@@ -102,14 +102,14 @@ codeblock {
   display: flex; }
 
 .missed-letter {
-  display: flex;
-  flex-direction: row;
-  margin-left: 1px;
+  display: inline-block;
+  align-self: center;
   color: #942003;
-  font-size: 17px; }
+  font-size: 20px; }
 
 .misses-info {
-  font-family: "Lacquer"; }
+  font-family: "Lacquer";
+  margin-right: 5px; }
 
 .boxes-wrapper {
   display: flex;

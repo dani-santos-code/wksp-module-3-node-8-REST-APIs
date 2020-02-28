@@ -20,7 +20,6 @@ express()
   .use(bodyParser.json())
   .use(express.urlencoded({ extended: false }))
   .get("/clients", handleClient)
-
   // endpoints
   .get("/", (req, res) => {
     res.redirect("/hangman");
