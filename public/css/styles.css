@@ -98,6 +98,19 @@ codeblock {
   height: 25px;
   font-size: 20px; }
 
+.misses {
+  display: flex; }
+
+.missed-letter {
+  display: flex;
+  flex-direction: row;
+  margin-left: 1px;
+  color: #942003;
+  font-size: 17px; }
+
+.misses-info {
+  font-family: "Lacquer"; }
+
 .boxes-wrapper {
   display: flex;
   justify-content: center; }
@@ -111,8 +124,7 @@ codeblock {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  font-weight: bold;
-  text-transform: capitalize; }
+  font-weight: bold; }
 
 .modal {
   display: none;

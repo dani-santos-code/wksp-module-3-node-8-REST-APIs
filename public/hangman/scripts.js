@@ -1,7 +1,9 @@
 const boxesWrapper = document.getElementById("boxes-wrapper");
 const modalDiv = document.getElementById("modal");
 const randomId = Math.round(Math.random() * (130 - 120) + 120).toString();
+const missesDiv = document.getElementById("misses");
 let LIVES = 10;
+let misses = [];
 
 document.getElementById("counter").innerText += `Total Tries: ${LIVES}`;
 
@@ -24,7 +26,7 @@ const handleSubmit = async () => {
   event.preventDefault();
   document.getElementById("message").innerText = "";
 
-  const letter = document.getElementById("letter").value;
+  const letter = document.getElementById("letter").value.toLowerCase();
   const response = await fetch(`/hangman/guess/${randomId}/${letter}`);
   const { trueIndexes, letterCount } = await response.json();
   if (trueIndexes.length !== 0) {
@@ -36,8 +38,17 @@ const handleSubmit = async () => {
       document.getElementById(i).innerText = letter;
     }
   } else {
-    LIVES -= 1;
-    console.log(LIVES);
+    if (!misses.includes(letter)) {
+      LIVES -= 1;
+      misses.push(letter);
+    }
+    misses.forEach((miss, i) => {
+      const div = document.createElement("div");
+      div.setAttribute("id", `miss${i}`);
+      div.classList.add("missed-letter");
+      missesDiv.appendChild(div);
+      document.getElementById(`miss${i}`).innerText = miss;
+    });
     document.getElementById("counter").innerText = `Total Tries: ${LIVES}`;
     document.getElementById("message").innerText = "Not really! Try again!";
   }
@@ -50,7 +61,7 @@ const checkEnd = letterCount => {
   // console.log(arrValues);
   const isAllTrue = currentValue => currentValue === true;
   if (arrValues.length === letterCount && !arrValues.includes(undefined)) {
-    console.log("HERE. START CHECKING");
+    // console.log("HERE. START CHECKING");
     isEnd = arrValues.every(isAllTrue);
   }
   if (LIVES < 1) {
