@@ -20,15 +20,12 @@ const handleWords = (req, res) => {
 
 const handleCountById = (req, res) => {
   const { wordId } = req.params;
-  if (!words.includes(wordId)) {
-    res.status(404).json({ errorCode: 734, error: "Please enter a valid ID" });
+  const isValidId = words.filter(word => word.id === wordId);
+  if (isValidId.length > 0) {
+    const [{ letterCount }] = isValidId;
+    res.status(200).json({ letterCount });
   }
-  const [{ letterCount }] = words.filter(word => {
-    if (word.id === wordId) {
-      return word.letterCount;
-    }
-  });
-  res.status(200).json({ letterCount });
+  res.status(404).json({ error: "Please enter a valid ID" });
 };
 
 const handleGuess = (req, res) => {
