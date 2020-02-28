@@ -32,9 +32,7 @@ const handleSubmit = async () => {
   if (trueIndexes.length !== 0) {
     for (let i of trueIndexes) {
       arrValues[i] = true;
-      if (!word.includes(letter)) {
-        word[i] = letter;
-      }
+      word[i] = letter;
       document.getElementById(i).innerText = letter;
     }
   } else {
