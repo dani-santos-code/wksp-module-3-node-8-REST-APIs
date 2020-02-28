@@ -95,6 +95,7 @@ const handleClick = async () => {
   const hintP = document.getElementById("hint");
   hintP.innerText = `${hint}`;
   hintP.style.display = "block";
+  hintButton.removeEventListener("click", handleClick);
 };
 
 hintButton.addEventListener("click", handleClick);

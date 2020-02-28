@@ -25,6 +25,9 @@
 .hint {
   display: none;
   font-family: "Lacquer";
+  line-height: 2;
+  text-shadow: 2px 2px #f1dedeab;
+  font-weight: bold;
 }
 
 #hint-button {
@@ -32,7 +35,8 @@
   background-color: #e1e1e182;
   height: 35px;
   color: black;
-  border: 1px solid grey;
+  border: 1px solid #80808057;
+  border-radius: 2px;
 }
 .hint-wrapper {
   display: flex;
