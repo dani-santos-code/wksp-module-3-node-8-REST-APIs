@@ -3,7 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-const { words } = require("./data/words");
+const { idValidation } = require("./middleware/idValidation");
 
 const {
   handleClient,
@@ -11,17 +11,10 @@ const {
   handleGuess,
   handleCountById
 } = require("./handlers");
+
 const PORT = process.env.PORT || 8000;
 
 express()
-  //   .use(function(req, res, next) {
-  //     res.header("Access-Control-Allow-Origin", "*");
-  //     res.header(
-  //       "Access-Control-Allow-Headers",
-  //       "Origin, X-Requested-With, Content-Type, Accept"
-  //     );
-  //     next();
-  //   })
   .use(morgan("tiny"))
   .use(express.static("public"))
   .use(bodyParser.json())
@@ -33,13 +26,7 @@ express()
     res.redirect("/hangman");
   })
   .get("/hangman/words", handleWords)
-  .use("/hangman/:wordId", (req, res, next) => {
-    const { wordId } = req.params;
-    if (words.filter(word => word.id === wordId).length < 0) {
-      res.status(404).json({ error: "Please enter a valid ID" });
-    }
-    next();
-  })
+  .use("/hangman/:wordId", idValidation)
   .get("/hangman/:wordId", handleCountById)
   .get("/hangman/guess/:wordId/:letter", handleGuess)
   .listen(PORT, () =>
