@@ -18,21 +18,22 @@ const handleWords = (req, res) => {
   res.json(words);
 };
 
-const handleCountById = (req, res) => {
+const handleCountById = (req, res, next) => {
   const { wordId } = req.params;
   const isValidId = words.filter(word => word.id === wordId);
   if (isValidId.length > 0) {
     const [{ letterCount }] = isValidId;
     res.status(200).json({ letterCount });
+  } else {
+    res.status(404).json({ error: "Please, enter a valid ID" });
   }
-  res.status(404).json({ error: "Please enter a valid ID" });
 };
 
 const handleGuess = (req, res) => {
   const { wordId, letter } = req.params;
   const { word } = words.find(word => word.id === wordId);
   let guesses = [];
-  console.log(word);
+  //   console.log(word);
   const wordToArray = word.split("");
   const letterCount = word.length;
   wordToArray.forEach(char => {
