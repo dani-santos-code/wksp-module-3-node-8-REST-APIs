@@ -9,6 +9,7 @@ document.getElementById("counter").innerText += `Total Tries: ${LIVES}`;
 
 const arrValues = new Array();
 const word = [];
+
 const generateDivs = async randomId => {
   const response = await fetch(`/hangman/${randomId}`);
   const { letterCount } = await response.json();
@@ -25,7 +26,6 @@ generateDivs(randomId);
 const handleSubmit = async () => {
   event.preventDefault();
   document.getElementById("message").innerText = "";
-
   const letter = document.getElementById("letter").value.toLowerCase();
   const response = await fetch(`/hangman/guess/${randomId}/${letter}`);
   const { trueIndexes, letterCount } = await response.json();
@@ -53,16 +53,12 @@ const handleSubmit = async () => {
   checkEnd(letterCount);
   const form = document.getElementById("form");
   form.reset();
-  letter.focus();
+  document.getElementById("letter").focus();
 };
 
 const checkEnd = letterCount => {
   let isEnd = false;
-  // console.log(arrValues);
-  // const isAllTrue = currentValue => currentValue === true;
   if (arrValues.length === letterCount && !arrValues.includes(undefined)) {
-    // console.log("HERE. START CHECKING");
-    // isEnd = arrValues.every(isAllTrue);
     isEnd = true;
   }
   if (LIVES < 1) {
@@ -70,7 +66,6 @@ const checkEnd = letterCount => {
     modalDiv.innerText = `Holy cow!🐄You Lost All Your Lives!☠️ Better luck, next time!`;
   }
   if (isEnd) {
-    // console.log("YAY!!! YOU GOT IT!!!!!!!!");
     const capitalizeFirst = word[0].toUpperCase();
     const lowerCase = word.slice(1).join("");
     modalDiv.style.display = "flex";

@@ -20,6 +20,9 @@ const handleWords = (req, res) => {
 
 const handleCountById = (req, res) => {
   const { wordId } = req.params;
+  if (!words.includes(wordId)) {
+    res.status(404).json({ errorCode: 734, error: "Please enter a valid ID" });
+  }
   const [{ letterCount }] = words.filter(word => {
     if (word.id === wordId) {
       return word.letterCount;
@@ -49,7 +52,7 @@ const handleGuess = (req, res) => {
       }
     })
     .filter(val => val !== undefined);
-  res.status(200).json({ guesses, letterCount, trueIndexes });
+  res.status(200).json({ letterCount, trueIndexes });
 };
 
 module.exports = {
