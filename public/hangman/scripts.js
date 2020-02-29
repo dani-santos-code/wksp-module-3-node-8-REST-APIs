@@ -8,7 +8,7 @@ let misses = [];
 
 document.getElementById("counter").innerText += `Total Tries: ${LIVES}`;
 
-const arrValues = new Array();
+const arrValues = [];
 const word = [];
 
 const generateDivs = async randomId => {
@@ -50,7 +50,6 @@ const handleSubmit = async () => {
       document.getElementById(`miss${misses.length - 1}`).innerText =
         misses[misses.length - 1];
     }
-    // console.log(misses);
     document.getElementById("counter").innerText = `Total Tries: ${LIVES}`;
     document.getElementById("message").innerText = "Not really! Try again!";
   }
@@ -62,11 +61,7 @@ const handleSubmit = async () => {
 
 const checkEnd = letterCount => {
   let isEnd = false;
-  // console.log(arrValues);
-  // const isAllTrue = currentValue => currentValue === true;
   if (arrValues.length === letterCount && !arrValues.includes(undefined)) {
-    // console.log("HERE. START CHECKING");
-    // isEnd = arrValues.every(isAllTrue);
     isEnd = true;
   }
   if (LIVES < 1) {
@@ -74,7 +69,6 @@ const checkEnd = letterCount => {
     modalDiv.innerText = `Holy cow!🐄You Lost All Your Lives!☠️ Better luck, next time!`;
   }
   if (isEnd) {
-    // console.log("YAY!!! YOU GOT IT!!!!!!!!");
     const capitalizeFirst = word[0].toUpperCase();
     const lowerCase = word.slice(1).join("");
     modalDiv.style.display = "flex";
