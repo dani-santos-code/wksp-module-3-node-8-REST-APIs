@@ -1,23 +1,54 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Lacquer&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../css/styles.css" />
-    <style></style>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/images/favicon.ico"
+    />
+    <title>Hangman</title>
   </head>
   <body>
     <div class="content">
-      <form onsubmit="handleSubmit(event)">
-        <label for="letter">Letter</label>
-        <input
-          id="letter"
-          type="text"
-          name="letter"
-          placeholder="Enter a letter"
-          required
-        />
-        <button type="submit">NOW!!</button>
-      </form>
-      <div id="boxes-wrapper"></div>
+      <h1 class="main-title">HangMan</h1>
+      <div class="game-main">
+        <div class="counter-hint-wrapper">
+          <div class="counter" id="counter"></div>
+          <div class="hint-wrapper">
+            <p class="hint" id="hint"></p>
+            <button class="submit-button " id="hint-button" type="submit">
+              HINT
+            </button>
+          </div>
+        </div>
+        <form id="form" onsubmit="handleSubmit(event)">
+          <label for="letter" class="input-label"
+            >Enter a Letter or....DIE!!!</label
+          >
+          <input
+            class="letter-input"
+            id="letter"
+            type="text"
+            name="letter"
+            pattern="[A-Za-z]+"
+            autofocus
+            required
+          />
+          <button class="submit-button" type="submit">GUESS</button>
+        </form>
+        <span class="message" id="message"></span>
+        <div class="boxes-wrapper" id="boxes-wrapper"></div>
+        <div class="misses" id="misses">
+          <p class="misses-info">Your Misses:</p>
+        </div>
+      </div>
+      <div class="modal" id="modal"></div>
     </div>
     <script src="scripts.js"></script>
   </body>

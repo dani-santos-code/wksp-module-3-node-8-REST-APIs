@@ -18,16 +18,22 @@ const handleWords = (req, res) => {
   res.json(words);
 };
 
-const handleRandomWordId = (req, res) => {
-  const randomId = Math.round(Math.random() * (130 - 120) + 120).toString();
-  res.status(200).json({ randomId });
+const handleCountById = (req, res, next) => {
+  const { wordId } = req.params;
+  const isValidId = words.filter(word => word.id === wordId);
+  if (isValidId.length > 0) {
+    const [{ letterCount, hint }] = isValidId;
+    res.status(200).json({ letterCount, hint });
+  } else {
+    res.status(404).json({ error: "Please, enter a valid ID" });
+  }
 };
 
 const handleGuess = (req, res) => {
   const { wordId, letter } = req.params;
-  // query DB by wordId
   const { word } = words.find(word => word.id === wordId);
   let guesses = [];
+  //   console.log(word);
   const wordToArray = word.split("");
   const letterCount = word.length;
   wordToArray.forEach(char => {
@@ -37,12 +43,19 @@ const handleGuess = (req, res) => {
       guesses.push(false);
     }
   });
-  res.status(200).json({ guesses, letterCount });
+  const trueIndexes = guesses
+    .map((guess, index) => {
+      if (guess) {
+        return index;
+      }
+    })
+    .filter(val => val !== undefined);
+  res.status(200).json({ letterCount, trueIndexes });
 };
 
-module.exports = { handleClient, handleWords, handleGuess, handleRandomWordId };
-
-// http://localhost:8080/clients?name=daniele
-
-// .get("hello/:name")
-// hello/bob?message=bacon
+module.exports = {
+  handleClient,
+  handleWords,
+  handleGuess,
+  handleCountById
+};
